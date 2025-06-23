@@ -1,0 +1,39 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Budget Socket Test</title>
+</head>
+<body>
+  <h1>Socket Test</h1>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+  const socket = io('http://localhost:4000');
+
+  socket.on('connect', () => {
+    console.log('Connected to socket');
+
+    // Join the budget room
+    socket.emit('joinBudget', 'test-budget-1');
+
+    // Only one tab should emit this
+    if (!window.hasEmitted) {
+      window.hasEmitted = true;
+
+      setTimeout(() => {
+        console.log("Sending test transaction...");
+        socket.emit("updateTransaction", {
+          budgetId: "test-budget-1",
+          transaction: { id: 1, name: "Groceries", amount: 50 }
+        });
+      }, 3000);
+    }
+  });
+
+  // Listen for updates
+  socket.on("transactionUpdated", (data) => {
+    console.log("Received update:", data);
+  });
+</script>
+</body>
+</html>
