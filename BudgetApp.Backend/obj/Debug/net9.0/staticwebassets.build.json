@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Y0fbQquTBtHSVQCWDENhl3mFOMvzJjw+bhjOZHIUrrE=",
+  "Source": "BudgetApp.Backend",
+  "BasePath": "_content/BudgetApp.Backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
